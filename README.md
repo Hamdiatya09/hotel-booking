@@ -119,4 +119,15 @@ Tests unitaires : `mvn test`
 
 ## 9. Auteur
 
-Ibrahim Khalil Achek – Licence Business Computing, ESB
+## Équipe et répartition du travail
+
+| Membre | Partie |
+|---|---|
+| Mohamed Hamdi Atya | Configuration (pom.xml, application.properties, DataInitializer), README, gestion du dépôt GitHub |
+| Skander Ben Amara | Modèle de données : entités, annotations JPA et relations |
+| Ibrahim Khalil Achek | Repositories, requêtes personnalisées et services (règles métier) |
+| Karim Ben Amor | Controllers REST, gestion des erreurs et tests Postman |
+
+## Compatibilité
+
+Le projet utilise Spring Boot 3.5.7 et Lombok 1.18.42 pour fonctionner avec Java 17 à Java 25.
