@@ -36,6 +36,10 @@ public class ReservationService extends CrudService<Reservation> {
         this.extraRepository = extraRepository;
     }
 
+    /**
+     * Crée une réservation : la date d'arrivée ne peut pas être passée,
+     * le statut de départ est PENDING, puis prepare() vérifie et calcule le prix.
+     */
     @Override
     @Transactional
     public Reservation create(Reservation reservation) {
@@ -61,6 +65,10 @@ public class ReservationService extends CrudService<Reservation> {
         return reservationRepository.save(existing);
     }
 
+    /**
+     * Annule une réservation. Refusé si elle est déjà annulée
+     * ou si le séjour a commencé (CHECKED_IN) ou est terminé (CHECKED_OUT).
+     */
     @Transactional
     public Reservation cancel(Long id) {
         Reservation reservation = findById(id);
