@@ -1,9 +1,6 @@
 target/
 .idea/
-.vscode/
 *.iml
-.classpath
-.project
-.settings/
-.factorypath
-
+*.class
+.vscode/
+HELP.md
