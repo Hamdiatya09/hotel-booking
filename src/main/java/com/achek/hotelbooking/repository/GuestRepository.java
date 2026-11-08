@@ -10,7 +10,11 @@ import java.util.List;
 
 public interface GuestRepository extends JpaRepository<Guest, Long> {
 
-    // Custom query 4 (JPQL + group by): guests ranked by number of non-cancelled reservations
+    /**
+     * Requête JPQL n°4 : clients classés par nombre de réservations non annulées.
+     * GROUP BY + COUNT, résultat projeté dans l'interface GuestActivity (dto).
+     * Le Pageable limite le nombre de résultats (top N).
+     */
     @Query("""
             select g.id as guestId, g.firstName as firstName, g.lastName as lastName, count(r) as reservationCount
             from Reservation r join r.guest g

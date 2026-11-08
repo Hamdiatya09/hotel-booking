@@ -12,10 +12,14 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     List<Reservation> findByGuestId(Long guestId);
 
-    // Custom query 5 (derived): reservations starting inside a period
+    /** Requête dérivée n°5 : réservations dont la date d'arrivée est comprise dans une période. */
     List<Reservation> findByCheckInBetween(LocalDate from, LocalDate to);
 
-    // Used by the business rule "a room cannot be double-booked"
+    /**
+     * Règle métier : une chambre ne peut pas être réservée deux fois sur des dates qui se chevauchent.
+     * Renvoie true s'il existe une autre réservation non annulée sur la même chambre et la même période.
+     * excludeId permet d'ignorer la réservation en cours de modification.
+     */
     @Query("""
             select case when count(r) > 0 then true else false end from Reservation r
             where r.room.id = :roomId
